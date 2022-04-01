@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+		"baseUrl": ".",
+		"jsx": "react",
+		"target": "ES5",
+		"sourceMap": true,
+		"allowJs": true,
+		"esModuleInterop": true,
+		"experimentalDecorators": true,
+		"paths": {
+			"*": ["*", "src/*"]
+		}
+	},
+	"include": ["src/**/*"]
+}
