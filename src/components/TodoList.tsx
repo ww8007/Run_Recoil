@@ -1,4 +1,5 @@
 import React, { useState, useTransition } from 'react';
+import { jsx, css } from '@emotion/react';
 import {
 	atom,
 	selector,
@@ -77,7 +78,9 @@ interface prop {
 function TodoItem({ item }: prop) {
 	const [todoList, setTodoList] = useRecoilState(todoListState);
 	const index = todoList.findIndex((listItem) => listItem === item);
-
+	const style = (props: string) => css`
+		color: ${props};
+	`;
 	const editItemText = ({ target: { value } }) => {
 		setTodoList(
 			todoList.map((todo) => {
@@ -118,9 +121,15 @@ function TodoItem({ item }: prop) {
 		setTodoList(newList);
 	};
 
+	const inputStyle = (props) => css`
+		color: ${props};
+		font-size: 2rem;
+	`;
+
 	return (
-		<div>
+		<div css={style('black')}>
 			<input
+				css={inputStyle('orange')}
 				type="text"
 				value={item.text}
 				onChange={(e) => onChangeText(id, e.target.value)}
@@ -202,10 +211,13 @@ function TodoListStats() {
 		useRecoilValue(todoListStatsState);
 
 	const formattedPercentCompleted = Math.round(percentCompleted * 100);
-
+	const style = css`
+		color: hotpink;
+		background-color: black;
+	`;
 	return (
 		<ul>
-			<li>Total items: {totalNum}</li>
+			<li css={style}>Total items: {totalNum}</li>
 			<li>Items completed: {totalCompletedNum}</li>
 			<li>Items not completed: {totalUncompletedNum}</li>
 			<li>Percent completed: {formattedPercentCompleted}</li>
