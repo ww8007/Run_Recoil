@@ -10,8 +10,10 @@
 	"author": "ww8007 <wshmin@naver.com>",
 	"license": "MIT",
 	"dependencies": {
+		"@emotion/react": "^11.8.2",
 		"react": "^18.0.0",
 		"react-dom": "^18.0.0",
+		"react-query": "^3.34.19",
 		"recoil": "^0.7.0"
 	},
 	"devDependencies": {
@@ -23,6 +25,7 @@
 		"@babel/preset-react": "^7.16.7",
 		"@babel/preset-typescript": "^7.14.5",
 		"@types/react": "^17.0.14",
+		"@types/react-query": "^1.2.9",
 		"@types/recoil": "^0.0.9",
 		"babel-loader": "^8.2.4",
 		"html-webpack-plugin": "^5.5.0",
