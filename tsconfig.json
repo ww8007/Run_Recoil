@@ -3,6 +3,7 @@
 		"baseUrl": ".",
 		"jsx": "react",
 		"target": "ES5",
+		"jsxImportSource": "@emotion/react",
 		"sourceMap": true,
 		"allowJs": true,
 		"esModuleInterop": true,

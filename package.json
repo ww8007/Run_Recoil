@@ -24,6 +24,7 @@
 		"@babel/preset-env": "^7.16.11",
 		"@babel/preset-react": "^7.16.7",
 		"@babel/preset-typescript": "^7.14.5",
+		"@emotion/babel-plugin": "^11.7.2",
 		"@types/react": "^17.0.14",
 		"@types/react-query": "^1.2.9",
 		"@types/recoil": "^0.0.9",
