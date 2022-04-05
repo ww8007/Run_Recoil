@@ -1,4 +1,4 @@
-import React, { useState, useTransition } from 'react';
+import React, { useState } from 'react';
 import { jsx, css } from '@emotion/react';
 import {
 	atom,
@@ -12,15 +12,14 @@ import {
 	todoListFilterState,
 	todoListState
 } from '../atoms/todoListState';
+import { useGetSearchQuery } from '../hooks/useGetSearchQuery';
 export function TodoList() {
-	const [isPending, startTransition] = useTransition();
 	const [count, setCount] = useState(0);
+	const [searchText, setText] = useState('');
+	const { data, isLoading, isFetching, refetch, error } =
+		useGetSearchQuery(searchText);
+	console.log(data);
 
-	function handleClick() {
-		startTransition(() => {
-			setCount((c) => c + 1);
-		});
-	}
 	const todoList = useRecoilValue(todoListState);
 	return (
 		<>
@@ -31,8 +30,22 @@ export function TodoList() {
 			{todoList.map((todoItem) => (
 				<TodoItem key={todoItem.id} item={todoItem} />
 			))}
-			{isPending && <div>hihihi</div>}
-			<button onClick={handleClick}>{count}</button>
+
+			<button onClick={() => refetch()}>{count}</button>
+			{isLoading && <div>로딩중...</div>}
+			{isFetching && <div>hihi</div>}
+			<form>
+				<input onChange={(e) => setText(e.target.value)} />
+				<button onClick={() => refetch()}>검색</button>
+			</form>
+			{!isLoading && (
+				<ul>
+					{data.map((news, idx) => (
+						<div key={idx}>{news.abstract}</div>
+					))}
+				</ul>
+			)}
+			{error && <div>error</div>}
 		</>
 	);
 }
